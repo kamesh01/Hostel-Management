@@ -31,6 +31,7 @@ public class Hostel{
            }
 	   }
 	   public static boolean readData(String name) {
+		   Boolean chk = true;
 		   try{
 	             BufferedReader br = new BufferedReader(new FileReader("hostel.txt"));
 	               String line = null;
@@ -41,16 +42,28 @@ public class Hostel{
 		               String checkName = splited[0];
 		               //write your code here !!!
 //		               compare check name with name and return true if present and false if not
+		               if(checkName.equals(name)) {
+		            	   chk = true;
+		            	   break;
+		               }else {
+		            	   chk = false;
+		               }
 	               }
 	               
 	               
 	            }catch(Exception e){
 	                System.out.println(e);
 	            }
-			return true;
+			return chk;
 	   }
        public static void allotHostel(){
     	   //write your code here!!!
+    	   try {
+    		   writedata();
+    	   }
+    	   catch(Exception e) {
+    		   System.out.println(e);
+    	   }
     	   
        }
 
@@ -76,7 +89,7 @@ public class Hostel{
     	   boolean chk = true;
     	   
     	   //write your code here
-    	   
+    	   chk = readData(name);
     	   return chk;
         }
         
